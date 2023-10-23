@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { createUserWithEmailAndPassword, updateProfile } from "firebase/auth";
+import emailjs, { send } from 'emailjs-com';
 
 import InputControl from "../InputControl/InputControl";
 import { auth } from "../../firebase";
@@ -8,6 +9,26 @@ import { auth } from "../../firebase";
 import styles from "./Signup.module.css";
 
 function Signup() {
+
+  //
+  const [emailjsData, setEmailjsData] = useState({
+    user_name: "Hello",
+    user_email: "example@gmail.com",
+    message: "This is a test message."
+  });
+  const sendEmail = (e) => {
+    e.preventDefault();
+
+    emailjs.sendForm('gmail', 'template_xckno4s', emailjsData, '1-Y5d5TGmZp1y_gYP')
+      .then((result) => {
+          console.log(result.text);
+      }, (error) => {
+          console.log(error.text);
+      });
+      e.target.reset();
+  };
+  //
+
   const navigate = useNavigate();
   const [values, setValues] = useState({
     name: "",
@@ -43,6 +64,7 @@ function Signup() {
   return (
     <div className={styles.container}>
       <div className={styles.innerBox}>
+<form onSubmit={sendEmail}>
         <h1 className={styles.heading}>Signup</h1>
 
         <InputControl
@@ -79,6 +101,7 @@ function Signup() {
             </span>
           </p>
         </div>
+        </form>
       </div>
     </div>
   );
