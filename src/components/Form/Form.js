@@ -1,7 +1,10 @@
 import React, { useState } from 'react'
 import Header from '../Header'
+import { Link ,useNavigate} from 'react-router-dom';
 
 const Form = () => {
+
+  const navigate = useNavigate();
   const [user, setUser] = useState(
     {
         Name: '', Email: '', Gender: '', Category: '', Program: '',
@@ -33,6 +36,7 @@ const Form = () => {
     const res = fetch('https://lead-management-36cec-default-rtdb.firebaseio.com/UserData.json',options)
     if(res)
     {
+      navigate("/Checkout")
       alert("Application Submitted")
     }
     else
@@ -110,6 +114,7 @@ const Form = () => {
             <input name='document' value={user.document} onChange={data} type="file" className="mt-1 w-full" accept=".pdf,.docx,.jpg,.png"  />
           </div>
           <div className="mt-6">
+            <Link to='/Checkout'>
             <button
               type="submit"
               className="w-full bg-accent text-white p-2 rounded hover:bg-accent-dark transition duration-300"
@@ -117,10 +122,11 @@ const Form = () => {
             >
               Submit Application
             </button>
+            </Link>
           </div>
         </form>
-
       </div>
+      
     </div>
     </div>
   )

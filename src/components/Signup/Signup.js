@@ -3,6 +3,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { createUserWithEmailAndPassword, updateProfile } from "firebase/auth";
 import emailjs from 'emailjs-com';
 
+
 import InputControl from "../InputControl/InputControl";
 import { auth } from "../../firebase";
 
@@ -10,21 +11,6 @@ import styles from "./Signup.module.css";
 
 function Signup() {
 
-const form = useRef();
-//
-
-  // const sendEmail = (emailjsData) => {
-  // console.log("dddd")
-  //   // Send Email to User's Email Address
-  //   emailjs.sendForm('gmail', 'template_xckno4s', emailjsData, '1-Y5d5TGmZp1y_gYP')
-  //     .then((result) => {
-  //       console.log("aaa")
-  //         console.log(result.text);
-  //        console.log("bbb")
-  //     }, (error) => {
-  //         console.log(error.text);
-  //     });
-  // };
 
 
   const sendEmail = async (emailjsData) => {
