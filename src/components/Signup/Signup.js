@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { createUserWithEmailAndPassword, updateProfile } from "firebase/auth";
-import emailjs, { send } from 'emailjs-com';
+import emailjs from "emailjs-com";
 
 import InputControl from "../InputControl/InputControl";
 import { auth } from "../../firebase";
@@ -9,25 +9,27 @@ import { auth } from "../../firebase";
 import styles from "./Signup.module.css";
 
 function Signup() {
-
-  //
   const [emailjsData, setEmailjsData] = useState({
-    user_name: "Hello",
-    user_email: "example@gmail.com",
-    message: "This is a test message."
+    user_name: "",
+    user_email: "",
+    message: "",
   });
+
   const sendEmail = (e) => {
     e.preventDefault();
 
-    emailjs.sendForm('gmail', 'template_xckno4s', emailjsData, '1-Y5d5TGmZp1y_gYP')
-      .then((result) => {
+    emailjs
+      .sendForm("gmail", "template_xckno4s", emailjsData, "1-Y5d5TGmZp1y_gYP")
+      .then(
+        (result) => {
           console.log(result.text);
-      }, (error) => {
+          e.target.reset();
+        },
+        (error) => {
           console.log(error.text);
-      });
-      e.target.reset();
+        }
+      );
   };
-  //
 
   const navigate = useNavigate();
   const [values, setValues] = useState({
@@ -35,6 +37,7 @@ function Signup() {
     email: "",
     pass: "",
   });
+
   const [errorMsg, setErrorMsg] = useState("");
   const [submitButtonDisabled, setSubmitButtonDisabled] = useState(false);
 
@@ -53,7 +56,7 @@ function Signup() {
         await updateProfile(user, {
           displayName: values.name,
         });
-        navigate("/");
+        navigate("/Dashboard");
       })
       .catch((err) => {
         setSubmitButtonDisabled(false);
@@ -64,43 +67,46 @@ function Signup() {
   return (
     <div className={styles.container}>
       <div className={styles.innerBox}>
-<form onSubmit={sendEmail}>
-        <h1 className={styles.heading}>Signup</h1>
+        <form onSubmit={sendEmail}>
+          <h1 className={styles.heading}>Signup</h1>
 
-        <InputControl
-          label="Name"
-          placeholder="Enter your name"
-          onChange={(event) =>
-            setValues((prev) => ({ ...prev, name: event.target.value }))
-          }
-        />
-        <InputControl
-          label="Email"
-          placeholder="Enter email address"
-          onChange={(event) =>
-            setValues((prev) => ({ ...prev, email: event.target.value }))
-          }
-        />
-        <InputControl
-          label="Password"
-          placeholder="Enter password"
-          onChange={(event) =>
-            setValues((prev) => ({ ...prev, pass: event.target.value }))
-          }
-        />
+          <InputControl
+            label="Name"
+            placeholder="Enter your name"
+            value={values.name}
+            onChange={(event) =>
+              setValues((prev) => ({ ...prev, name: event.target.value }))
+            }
+          />
+          <InputControl
+            label="Email"
+            placeholder="Enter email address"
+            value={values.email}
+            onChange={(event) =>
+              setValues((prev) => ({ ...prev, email: event.target.value }))
+            }
+          />
+          <InputControl
+            label="Message"
+            placeholder="Enter message"
+            value={emailjsData.message}
+            onChange={(event) =>
+              setEmailjsData({ ...emailjsData, message: event.target.value })
+            }
+          />
 
-        <div className={styles.footer}>
-          <b className={styles.error}>{errorMsg}</b>
-          <button onClick={handleSubmission} disabled={submitButtonDisabled}>
-            Signup
-          </button>
-          <p>
-            Already have an account?{" "}
-            <span>
-              <Link to="/login">Login</Link>
-            </span>
-          </p>
-        </div>
+          <div className={styles.footer}>
+            <b className={styles.error}>{errorMsg}</b>
+            <button onClick={handleSubmission} disabled={submitButtonDisabled}>
+              Signup
+            </button>
+            <p>
+              Already have an account?{" "}
+              <span>
+                <Link to="/login">Login</Link>
+              </span>
+            </p>
+          </div>
         </form>
       </div>
     </div>
