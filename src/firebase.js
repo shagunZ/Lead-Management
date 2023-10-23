@@ -4,6 +4,7 @@ import { getAuth } from "firebase/auth";
 const firebaseConfig = {
   apiKey: "AIzaSyCbOfS69rwxEz9AASnh_PQyHlHcZRcs0-E",
   authDomain: "lead-management-36cec.firebaseapp.com",
+  databaseURL: "https://lead-management-36cec-default-rtdb.firebaseio.com",
   projectId: "lead-management-36cec",
   storageBucket: "lead-management-36cec.appspot.com",
   messagingSenderId: "854412744116",
