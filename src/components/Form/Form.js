@@ -1,8 +1,10 @@
 import React from 'react'
+import Header from '../Header'
 
 const Form = () => {
   return (
-    <div>
+    <div className='w-full'>
+      <Header/>
       application form
     </div>
   )
