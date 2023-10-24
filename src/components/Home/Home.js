@@ -11,7 +11,7 @@ function Home(props) {
       <Header/>
 
       
-      <div class="grid grid-cols-2 gap-4 p-16 opacity-90 "  style={{ backgroundImage: `url('https://www.cuchd.in/admissions/images/admission-banner.jpg')`,  backgroundRepeat: 'no-repeat',
+      <div class="grid grid-cols-2 gap-4 p-16  "  style={{ backgroundImage: `url('https://www.cuchd.in/admissions/images/admission-banner.jpg')`,  backgroundRepeat: 'no-repeat',
     backgroundPosition: 'center',
     backgroundSize: 'cover'}}>
 
@@ -27,7 +27,7 @@ function Home(props) {
          
             
             <div className="p-4 mt-6">
-                <a className="bg-blue py-4 border-blue border-2 hover:bg-white hover:border-accent hover:text-accent w-36 rounded-full p-3 px-8 text-center font-thin text-white transition-all"
+                <a className="bg-[#00007a;] py-4 border-[#00007a;] border-2  hover:border-accent hover:bg-accent w-36 rounded p-3 px-8 text-center font-thin text-white transition-all"
                  >
                   Apply Now ➡️
                 </a>
@@ -39,10 +39,12 @@ function Home(props) {
   </div>
  
   <div>
-  <div className="font-bold text-5xl text-blue p-5">{props.name ? `Welcome - ${props.name}` : "Login please"}</div>
-  <p className="text-white  text-lg font-extralight md:text-left flex flex-wrap">
-            Empowering Careers & Fulfilling Dreams With Scholarships worth ₹170 Crore</p>
-  <img className=" border-dark rounded" src="./SMVDU.png" alt="afdsaf" />
+  <div className="font-bold text-5xl text-[#00007a;] p-5">{props.name ? `Welcome - ${props.name}` : "Login please"}</div>
+  <p className="text-white  text-lg font-extralight md:text-left flex flex-wrap tracking-wide italic">
+  We don’t just give students an education and experiences that set them up for success in a career. We help them succeed in their career—to discover a field they’re passionate about and dare to lead it.</p>
+            {/* <div className="container">
+  <img className=" border-dark rounded w-70 h-60" src="https://cdn.pixabay.com/photo/2020/10/17/20/28/virtual-5663279_640.png" alt="afdsaf" />
+            </div> */}
   </div>
 </div>
 
@@ -51,32 +53,33 @@ function Home(props) {
 {/* tophighlights */}
 <div className=" mb-4 py-4 bg-[#f5f5f5]">
   <div className="text-center font-thin mt-5">
-  <h1 className="font-extralight tracking-wide text-red text-5xl">#Top Highlights</h1>
+  <h1 className="font-extralight tracking-wide text-blue text-5xl"></h1>
   </div>
 
   <div class="grid grid-cols-3 gap-8 container my-8">
-  <div class="max-w-sm  bg-teal border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700" style={{boxShadow:"0 0 20px #ccc"}}>
+  <div class="bg-teal border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700" style={{boxShadow:"0 0 20px #ccc"}}>
     <a href="#">
-        <img class="rounded-t-lg" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTTyg1_XUif7DPqsFPsY9VngwDrshWNdWFTfA&usqp=CAU" alt="" style={{width:"100%",height:"60%"}} />
+        <img class="rounded-t-lg" src="https://smvdu.ac.in/wp-content/uploads/2023/06/final2-1.jpg" alt="" style={{width:"100%",height:"60%"}} />
     </a>
-    <div class="p-5">
-        <p class="mb-3 italic font-normal text-gray-700 dark:text-gray-400">The prestigious WURI Rankings 2023 has ranked us third in India among both government and private universities.</p>
+    <div class="p-2 mt-3">
+        <p class="mb-3 italic font-light text-blue">Vice Chancellor's Message
+Prof. (Dr.) Pragati Kumar. It gives me great pride and pleasure to assume the office of the Vice-Chancellor of Shri Mata Vaishno Devi University (SMVDU) which is situated in the spiritual lap of Maa Bhagwati. </p>
     </div>
 </div>
   <div class="max-w-sm  bg-teal border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700" style={{boxShadow:"0 0 20px #ccc"}}>
     <a href="#">
-        <img class="rounded-t-lg" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTwv-d166YeQr5eB8laZxZj_ePGtiBSydCxzw&usqp=CAU" alt="" style={{width:"100%",height:"60%"}}/>
+        <img class="rounded-t-lg" src="https://smvdu.ac.in/wp-content/uploads/2023/10/Copy-of-Student-Achievements-400x245.jpg" alt="" style={{width:"100%",height:"60%"}}/>
     </a>
-    <div class="p-5">
-        <p class="mb-3 italic font-normal text-gray-700 dark:text-gray-400">The prestigious WURI Rankings 2023 has ranked us third in India among both government and private universities.</p>
+    <div class="p-2 mt-3">
+        <p class="mb-3 italic font-light text-blue">Jeetendra Kumar, Alumni of Mechanical Engineering, Shri Mata Vaishno Devi University, Katra, Jammu and Kashmir; has made an important contribution to India’s Chandrayaan 3 mission to the Moon and the LVM 3 rocket that carried it. </p>
     </div>
 </div>
   <div class="max-w-sm  bg-teal border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700" style={{boxShadow:"0 0 20px #ccc"}}>
     <a href="#">
-        <img class="rounded-t-lg" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT3h7liW07grLz7GzX7-gVaQLRgU_ZwQ30AOA&usqp=CAU" alt="" style={{width:"100%",height:"60%"}}/>
+        <img class="rounded-t-lg" src="https://smvdu.ac.in/wp-content/uploads/2023/10/dsadsd-1-400x245.jpg" alt="" style={{width:"100%",height:"60%"}}/>
     </a>
-    <div class="p-5">
-        <p class="mb-3 italic font-normal text-gray-700 dark:text-gray-400">The prestigious WURI Rankings 2023 has ranked us third in India among both government and private universities.</p>
+    <div class="p-2 mt-3">
+        <p class="mb-3 italic font-light text-blue">The Internal Complaint Committee (ICC) and National Service Scheme (NSS), SMVDU joined hands to organize a One Day Awareness Campaign on Women’s Rights and Domestic Violence (Prevention of Sexual Harassment Act) on 13th October 2023 at the Matrika Auditorium.</p>
     </div>
 </div>
 
@@ -136,30 +139,20 @@ function Home(props) {
   </div> */}
 
 <div class="grid grid-cols-3 gap-8 container my-8">
-<div class="max-w-sm  bg-teal border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700" style={{boxShadow:"0 0 20px #ccc"}}>
-        <img class="rounded-t-lg" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRN-z38X9LgvIHoMxJsdvHWEb_k4Wue2cFeNw&usqp=CAU"  style={{width:"100%",height:"60%"}} alt="" />
-        <div class="p-5">
-        <p class="mb-3 italic font-normal text-gray-700 dark:text-gray-400">The prestigious WURI Rankings 2023 has ranked us third in India among both government and private universities.</p>
-       
-    </div>
+<div class="  bg-teal border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700" style={{boxShadow:"0 0 20px #ccc"}}>
+        <img class="rounded-t-lg" src="https://smvdu.ac.in/wp-content/uploads/2023/06/05082022_nirf2022EnggRank.jpg"  style={{width:"100%"}} alt="" />
 </div>
-<div class="max-w-sm  bg-teal border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700" style={{boxShadow:"0 0 20px #ccc"}}>
-        <img class="rounded-t-lg" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRwp9WFCo9Qkkk2dlHTQpDTz7IOih-22eMUEg&usqp=CAU"  style={{width:"100%"}} alt=""  />
-    <div class="p-5">
-        <p class="mb-3 italic font-normal text-gray-700 dark:text-gray-400">The prestigious WURI Rankings 2023 has ranked us third in India among both government and private universities.</p>
-       
-    </div>
+<div class="  bg-teal border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700" style={{boxShadow:"0 0 20px #ccc"}}>
+        <img class="rounded-t-lg" src="https://smvdu.ac.in/wp-content/uploads/2023/06/05082022_nirf2022EnggRank.jpg"  style={{width:"100%"}} alt=""  />
 </div>
-<div class="max-w-sm  bg-teal border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700" style={{boxShadow:"0 0 20px #ccc"}}>
-        <img class="rounded-t-lg" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQbkaMQFmvUge-2pSIP5OEqtulV4RwEz6pA3arwC3ndEPMkVuMF3GtjPAdiB5znjdx0T5Y&usqp=CAU"  style={{width:"100%"}}  alt="" />
-    <div class="p-5">
-        <p class="mb-3 italic font-normal text-gray-700 dark:text-gray-400">The prestigious WURI Rankings 2023 has ranked us third in India among both government and private universities.</p>
-       
-    </div>
+<div class="  bg-teal border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700" style={{boxShadow:"0 0 20px #ccc"}}>
+        <img class="rounded-t-lg" src="https://smvdu.ac.in/wp-content/uploads/2023/06/05082022_nirf2022ArchRank.jpg"  style={{width:"100%"}}  alt="" />
 </div>
 
 
 </div>
+
+
 
 
 <Footer/>

@@ -13,12 +13,14 @@
   height: fit-content;
   width: fit-content;
   background-color: #fff;
-  box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.2);
   padding: 30px;
   border-radius: 10px;
   display: flex;
   flex-direction: column;
-  gap: 30px;
+  gap: 25px;
+  margin-left: auto;
+  margin-right: auto;
+  /* box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.5); */
 }
 
 .footer {
@@ -37,7 +39,7 @@
 .footer button {
   outline: none;
   border: none;
-  background-color: #9900ff;
+  background-color: #f7a600;
   color: #fff;
   border-radius: 5px;
   font-weight: bold;
@@ -46,6 +48,8 @@
   width: 100%;
   transition: 100ms;
   cursor: pointer;
+  font-size: 13px;
+  font-weight: 700;
 }
 
 .footer button:disabled {
@@ -53,17 +57,17 @@
 }
 
 .footer button:hover {
-  background-color: #aa2aff;
+  background-color: #f79800;
 }
 
 .footer p {
   font-weight: 700;
-  color: #000;
+  color: #2a2a2a;
 }
 
 .footer p span a {
   font-weight: bold;
-  color: #9900ff;
+  color: #f7a600;
   letter-spacing: 1px;
   font-size: 1rem;
   text-decoration: none;

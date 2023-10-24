@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import { signInWithEmailAndPassword ,signOut} from "firebase/auth";
+import { signInWithEmailAndPassword, signOut } from "firebase/auth";
 
 import InputControl from "../InputControl/InputControl";
 import { auth } from "../../firebase";
@@ -27,7 +27,7 @@ function Login() {
     signInWithEmailAndPassword(auth, values.email, values.pass)
       .then(async (res) => {
         setSubmitButtonDisabled(false);
-        
+
         navigate("/Dashboard");
       })
       .catch((err) => {
@@ -36,34 +36,43 @@ function Login() {
       });
   };
 
+  function logout(){
+    signOut(auth).then(() => {
+      // Sign-out successful.
+    }).catch((error) => {
+      // An error happened.
+      console.log(error)
+    });
+  }
 
   return (
-    <div className={styles.container}>
-      <div className={styles.innerBox}>
-        <h1 className={styles.heading}>Login</h1>
+    <div className=" h-screen loginbanner">
+      <div className="pt-4">
+        <img className='mx-auto ' src="https://www.careeryojana.in/wp-content/uploads/2021/04/SMVDU-University.png" alt="img" height='155px' width='155px' />
+      </div>
 
-        <InputControl
-          label="Email"
-          onChange={(event) =>
-            setValues((prev) => ({ ...prev, email: event.target.value }))
-          }
-          placeholder="Enter email address"
-        />
-        <InputControl
-          label="Password"
-          onChange={(event) =>
-            setValues((prev) => ({ ...prev, pass: event.target.value }))
-          }
-          placeholder="Enter Password"
-        />
+      <div className=' mt-16'>
+        <div className={styles.innerBox}>
+          <h1 className="font-semibold text-lg">LOGIN</h1>
+
+          <InputControl
+            onChange={(event) =>
+              setValues((prev) => ({ ...prev, email: event.target.value }))
+            }
+            placeholder="Enter email address"
+          />
+          <InputControl
+            onChange={(event) =>
+              setValues((prev) => ({ ...prev, pass: event.target.value }))
+            }
+            placeholder="Enter Password"
+          />
 
         <div className={styles.footer}>
           <b className={styles.error}>{errorMsg}</b>
           <button disabled={submitButtonDisabled} onClick={handleSubmission}>
             Login
           </button>
-
-      
           <p>
             Already have an account?{" "}
             <span>
@@ -72,6 +81,7 @@ function Login() {
           </p>
         </div>
       </div>
+    </div>
     </div>
   );
 }

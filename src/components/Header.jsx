@@ -17,19 +17,16 @@ const Header = () => {
     
     return (
         <div>
-            <nav className="bg-jacarta-800 p-2 bg-transparent border">                
+            <nav className="bg-jacarta-800 p-2 bg-[#00007a;]  border">                
                 <div className="container mx-auto flex justify-between items-center">
                 <img className="checkoutImg" src="https://th.bing.com/th/id/OIP.71hLPhAxg6afbJUZdkGlQgHaHR?pid=ImgDet&rs=1"
         alt="The cover of Stubborn Attachments"/>
-                    <div className="text-black font-bold text-lg">SMVDU Admissions</div>
+                    <div className="text-white font-bold text-lg">SMVDU Admissions</div>
                     <div className="space-x-4">
                         <Link to='/login'><button className="text-white hover:text-jacarta-300 transition duration-300">Login</button></Link>
                         <Link to='/signup'><button className="text-white hover:text-jacarta-300 transition duration-300">Signup</button></Link>
-                        <button className=" bg-accent hover:bg-accent-dark text-white font-bold py-2 px-4 rounded transition duration-300">
-                            User
-                        </button>
 
-                        <button className=" bg-accent hover:bg-accent-dark text-white font-bold py-2 px-4 rounded transition duration-300" onClick={handleLogout}>
+                        <button className=" bg-blue hover:bg-accent-dark text-white font-bold py-2 px-4 rounded transition duration-300" onClick={handleLogout}>
             Logout
           </button>
 
