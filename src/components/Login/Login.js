@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import { signInWithEmailAndPassword ,signOut} from "firebase/auth";
+import { signInWithEmailAndPassword, signOut } from "firebase/auth";
 
 import InputControl from "../InputControl/InputControl";
 import { auth } from "../../firebase";
@@ -27,7 +27,7 @@ function Login() {
     signInWithEmailAndPassword(auth, values.email, values.pass)
       .then(async (res) => {
         setSubmitButtonDisabled(false);
-        
+
         navigate("/Dashboard");
       })
       .catch((err) => {
@@ -36,7 +36,7 @@ function Login() {
       });
   };
 
-  function logout(){
+  function logout() {
     signOut(auth).then(() => {
       // Sign-out successful.
     }).catch((error) => {
@@ -46,37 +46,51 @@ function Login() {
   }
 
   return (
-    <div className={styles.container}>
-      <div className={styles.innerBox}>
-        <h1 className={styles.heading}>Login</h1>
+    <div className=" h-screen loginbanner">
+      <div className="pt-4">
+        <img className='mx-auto ' src="https://www.careeryojana.in/wp-content/uploads/2021/04/SMVDU-University.png" alt="img" height='155px' width='155px' />
+      </div>
 
-        <InputControl
-          label="Email"
-          onChange={(event) =>
-            setValues((prev) => ({ ...prev, email: event.target.value }))
-          }
-          placeholder="Enter email address"
-        />
-        <InputControl
-          label="Password"
-          onChange={(event) =>
-            setValues((prev) => ({ ...prev, pass: event.target.value }))
-          }
-          placeholder="Enter Password"
-        />
+      <div className=' mt-16'>
+        <div className={styles.innerBox}>
+          <h1 className="font-semibold text-lg">LOGIN</h1>
 
-        <div className={styles.footer}>
-          <b className={styles.error}>{errorMsg}</b>
-          <button disabled={submitButtonDisabled} onClick={handleSubmission}>
-            Login
-          </button>
-          <p>
-            Already have an account?{" "}
-            <span>
-              <Link to="/signup">Sign up</Link>
-            </span>
-          </p>
+          <InputControl
+            onChange={(event) =>
+              setValues((prev) => ({ ...prev, email: event.target.value }))
+            }
+            placeholder="Enter email address"
+          />
+          <InputControl
+            onChange={(event) =>
+              setValues((prev) => ({ ...prev, pass: event.target.value }))
+            }
+            placeholder="Enter Password"
+          />
+
+          <div className={styles.footer}>
+            <b className={styles.error}>{errorMsg}</b>
+            <button disabled={submitButtonDisabled} onClick={handleSubmission}>
+              Login
+            </button>
+            <p>
+              Already have an account?{" "}
+              <span>
+                <Link to="/signup">Sign up</Link>
+              </span>
+            </p>
+          </div>
         </div>
+      </div>
+
+      <div className="mt-24">
+        <button className="mx-auto flex shadow-lg px-6 py-2 gap-2 bg-[#3092dd] rounded-lg ">
+          <div><img src="https://cucet.cuchd.in/new-assets/img/phone-call-icon-white.webp" alt="" /></div>
+          <div className=" text-left">
+            <div className="text-light-base text-sm font-semibold">Need Help</div>
+            <div className="text-light-base font-semibold text-lg">01991 285 524</div>
+          </div>
+        </button>
       </div>
     </div>
   );

@@ -78,3 +78,28 @@
   .checkoutBtn:hover {
     opacity: 0.8;
   }
+
+  .signupbanner{
+    background-image: url('https://cucet.cuchd.in/new-assets/img/herobanner-bg1.webp');
+    content: "";
+    position: center center;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    /* border-radius: 0 0 100px 100px; */
+    background-blend-mode: overlay;
+    background-color: rgba(34, 71, 122, 0.7);
+  }
+
+  .loginbanner{
+    background-image: url('https://cucet.cuchd.in/new-assets/img/login-bg.webp');
+    content: "";
+    position: relative;
+    background-repeat: no-repeat;
+    background-size: cover;
+    text-align: center;
+    /* border-radius: 0 0 100px 100px; */
+    background-blend-mode: overlay;
+    background-color: rgba(12, 25, 42, 0.9);
+  }

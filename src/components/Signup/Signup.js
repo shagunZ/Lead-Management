@@ -1,8 +1,8 @@
-import React, { useState,useRef } from "react";
+import React, { useState, useRef } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { createUserWithEmailAndPassword, updateProfile } from "firebase/auth";
 import emailjs from 'emailjs-com';
-
+import Header from '../Header';
 
 import InputControl from "../InputControl/InputControl";
 import { auth } from "../../firebase";
@@ -21,7 +21,7 @@ function Signup() {
       console.error(error);
     }
   };
-  
+
   //
 
   const navigate = useNavigate();
@@ -51,13 +51,13 @@ function Signup() {
         await updateProfile(user, {
           displayName: values.name,
         });
-    console.log("f enter")
-    const emailjsData = {
-      user_name: values.name,
-      user_email: values.email,
-      user_password: values.pass,
-    };
-    console.log("d enter")
+        console.log("f enter")
+        const emailjsData = {
+          user_name: values.name,
+          user_email: values.email,
+          user_password: values.pass,
+        };
+        console.log("d enter")
         sendEmail(emailjsData);
         console.log("d2 enter")
 
@@ -70,51 +70,108 @@ function Signup() {
   };
 
   return (
-    <div className={styles.container}>
-      <div className={styles.innerBox}>
-{/* <form onSubmit={handleSubmission}> */}
-        <h1 className={styles.heading}>Signup</h1>
 
-        <InputControl
-        name="user_name"
-          label="Name"
-          placeholder="Enter your name"
-          onChange={(event) =>
-            setValues((prev) => ({ ...prev, name: event.target.value }))
-          }
-        />
-        <InputControl
-        name="user_email"
-          label="Email"
-          placeholder="Enter email address"
-          onChange={(event) =>
-            setValues((prev) => ({ ...prev, email: event.target.value }))
-          }
-        />
-        <InputControl
-        name="user_password"
-          label="Password"
-          placeholder="Enter password"
-          onChange={(event) =>
-            setValues((prev) => ({ ...prev, pass: event.target.value }))
-          }
-        />
+    <div className=" md:flex sm:inline-block signupbanner md:h-screen">
+      <div className=" border-red p-8 pt-12">
 
-        <div className={styles.footer}>
-          <b className={styles.error}>{errorMsg}</b>
-          <button onClick={handleSubmission} disabled={submitButtonDisabled}>
-            Signup
-          </button>
-          <p>
-            Already have an account?{" "}
-            <span>
-              <Link to="/login">Login</Link>
-            </span>
-          </p>
+        <div className="border-b md:w-3/5 sm:w-full border-b-[#225296] pb-16">
+          <div className=" text-light-base font-semibold">AN ILLUSTRIOUS CAREER BEGINS AT</div>
+          <div className="text-[#f7a300] font-semibold text-6xl">INDIA NO. 1</div>
+          <div className="text-[#f7a300] font-semibold text-5xl"> STATE UNIVERSITY</div>
+          <div className="text-light-base ">SMVDU offers top-notch career opportunities and global exposure, recognizing academic excellence with</div>
+          <div className="text-[#e9c681] font-semibold text-lg">scholarships worth Rs. 170 Crores.</div>
         </div>
-        {/* </form> */}
+
+        <div className=" mt-8 md:flex sm:inline-block">
+          <div className="">
+            <div className="text-light-base font-semibold text-xl">EMPOWERING DREAMS WITH</div>
+            <div className="text-[#f7a300] font-semibold text-xl">ELITE PLACEMENTS</div>
+
+            <div className="border border-[#225296] mt-5 p-4  bg-[#0b3671] rounded-lg">
+              <div className="text-light-base font-semibold text-sm">GENERATING WORLD-CLASS OPPORTUNITIES</div>
+              <div className="text-[#e9c681] text-3xl font-semibold">400+ PLACEMENT</div>
+              <div className="text-[#e9c681] text-3xl font-semibold">OFFERS</div>
+              <div className="text-light-base">WITH THE HIGHEST PACKAGE OF ₹15 LPA FOLLOWED BY ₹7 LPA AS AVERAGE PACKAGE</div>
+            </div>
+          </div>
+
+          <div className=" ">
+
+            <div className=" flex justify-center">
+              <div className=" w-1/2">
+                <div className="text-light-base font-semibold text-sm">SMVDU RANKS</div>
+                <div className="text-[#e9c681] text-3xl font-semibold">101th</div>
+                <div className="text-light-base">AMONG ENGINEERING INSTITUTIONS IN INDIA BY NIRF 2022 </div>
+              </div>
+              <div>
+                <img src="https://cucet.cuchd.in/new-assets/img/nirf-logo.webp" alt="img" />
+              </div>
+            </div>
+
+            <div className=" flex mt-3 justify-center">
+              <div className=" w-1/2">
+                <div className="text-light-base font-semibold text-sm">SMVDU RANKED IN</div>
+                <div className="text-[#e9c681] text-3xl font-semibold">801-1000 band</div>
+                <div className="text-light-base">AMONG TOP UNIVERSITIES IN WORLD BY WORLD UNIVERSITY RANKING 2023 </div>
+              </div>
+              <div>
+                <img src="https://cucet.cuchd.in/new-assets/img/qs-ranking-logo-subject.webp" alt="img" />
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+      </div>
+
+      <div className="md:mr-[80px] my-auto">
+        <div className={styles.innerBox}>
+          {/* <form onSubmit={handleSubmission}> */}
+          <h1 className='text-white text-xl font-semibold text-center '>ONLINE APPLICATION</h1>
+          <p className="text-orange text-center font-semibold  text-md">Apply for SMVDU entrance</p>
+
+          <InputControl
+            name="user_name"
+            // label="Name"
+            placeholder="STUDENT NAME"
+            onChange={(event) =>
+              setValues((prev) => ({ ...prev, name: event.target.value }))
+            }
+          />
+          <InputControl
+            name="user_email"
+            // label="Email"
+            placeholder="STUDENT EMAIL ADDRESS"
+            onChange={(event) =>
+              setValues((prev) => ({ ...prev, email: event.target.value }))
+            }
+          />
+          <InputControl
+            name="user_password"
+            // label="Password"
+            placeholder="STUDENT PASSWORD"
+            onChange={(event) =>
+              setValues((prev) => ({ ...prev, pass: event.target.value }))
+            }
+          />
+
+          <div className={styles.footer}>
+            <b className={styles.error}>{errorMsg}</b>
+            <button onClick={handleSubmission} disabled={submitButtonDisabled}>
+              REGISTER
+            </button>
+            <p>
+              Already have an account?{" "}
+              <span>
+                <Link to="/login">Login</Link>
+              </span>
+            </p>
+          </div>
+          {/* </form> */}
+        </div>
       </div>
     </div>
+
   );
 }
 
