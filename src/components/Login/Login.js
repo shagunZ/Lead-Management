@@ -36,14 +36,6 @@ function Login() {
       });
   };
 
-  function logout(){
-    signOut(auth).then(() => {
-      // Sign-out successful.
-    }).catch((error) => {
-      // An error happened.
-      console.log(error)
-    });
-  }
 
   return (
     <div className={styles.container}>
@@ -70,6 +62,8 @@ function Login() {
           <button disabled={submitButtonDisabled} onClick={handleSubmission}>
             Login
           </button>
+
+      
           <p>
             Already have an account?{" "}
             <span>
