@@ -36,7 +36,7 @@ const Form = () => {
     const res = fetch('https://lead-management-36cec-default-rtdb.firebaseio.com/UserData.json',options)
     if(res)
     {
-      navigate("/Checkout")
+      navigate("/")
       alert("Application Submitted")
     }
     else

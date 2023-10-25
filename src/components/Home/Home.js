@@ -26,11 +26,13 @@ function Home(props) {
        
          
             
-            <div className="p-4 mt-6">
-                <a className="bg-[#00007a;] py-4 border-[#00007a;] border-2  hover:border-accent hover:bg-accent w-36 rounded p-3 px-8 text-center font-thin text-white transition-all"
+            <div className="p-2 mt-6">
+            <Link to='/signup'>
+                <button className="hover:cursor-pointer bg-[#00007a;] py-4 border-[#00007a;] border-2  hover:border-accent hover:bg-accent w-36 rounded p-3 px-8 text-center font-thin text-white transition-all"
                  >
-                  Apply Now ➡️
-                </a>
+                  <p>Apply Now</p>
+                </button>
+                </Link>
             </div>
             </div>
           </div>    
