@@ -1,17 +1,26 @@
-import React, { useState } from 'react'
+import React, { useState,useEffect } from 'react'
 import Header from '../Header'
 import { Link ,useNavigate} from 'react-router-dom';
-import { useUser } from '../UserContext';
+import { auth } from '../../firebase';
 const Form = () => {
+  const [userEmail, setUserEmail] = useState("");
 
+  useEffect(() => {
+    auth.onAuthStateChanged((user) => {
+      if (user) {
+        setUserEmail(user.email);
+      } else setUserEmail("");
+    });
+  }, []);
   const navigate = useNavigate();
+  const [user, setUser] = useState(
+    {
+        Name: '', Email: userEmail, Gender: '', Category: '', Program: '',
+    }
+  );
 
-  const {user,setUser} = useUser();
-  // const [user, setUser] = useState(
-  //   {
-  //       Name: '', Email: '', Gender: '', Category: '', Program: '', Payment: 'True'
-  //   }
-  // );
+
+console.log("found?",userEmail)
   
   let name, value
   console.log(user)
@@ -22,21 +31,43 @@ const Form = () => {
     setUser({...user, [name]: value})
   }
 
-  const getdata = (e) => 
+  const getdata =async (e) => 
   {
-    const {Name, Email, Gender, Category, Program, Payment} = user;
-    console.log("uuu",Name,user)
+    const {Name, Email, Gender, Category, Program} = user;
     e.preventDefault();
+
+///
+const usersRef = 'https://lead-management-36cec-default-rtdb.firebaseio.com/UserData.json';
+const response = await fetch(usersRef);
+const userData = await response.json();
+
+let userId = null;
+
+// user's unique key
+for (const key in userData) {
+  if (userData[key].Email === userEmail) {
+    userId = key;
+    break;
+  }
+}
+console.log("mila",Email,userId)
+///
+if (userId) {
+  const updatedUserData = {
+    Name,
+    Email,
+    Gender,
+    Category,
+    Program,
+}
     const options = {
-      method: 'POST',
+      method: 'PATCH',
       headers: {
         'Content-Type': 'application/json'
       },
-      body: JSON.stringify({
-          Name, Email, Gender, Category, Program, Payment
-      })
+      body: JSON.stringify(updatedUserData)
     }
-    const res = fetch('https://lead-management-36cec-default-rtdb.firebaseio.com/UserData.json',options)
+    const res = await fetch(`https://lead-management-36cec-default-rtdb.firebaseio.com/UserData/${userId}.json`, options);
     if(res)
     {
       navigate("/Checkout")
@@ -47,7 +78,7 @@ const Form = () => {
       alert("Error occured")
     }
   }
-
+};
   return (
     <div className='w-full'>
       <Header/>
