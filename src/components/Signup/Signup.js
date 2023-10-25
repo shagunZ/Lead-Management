@@ -11,6 +11,44 @@ import styles from "./Signup.module.css";
 
 function Signup() {
 
+  //for putting data in realtime database
+  const [user, setUser] = useState(
+    {
+        Name: '', Email: '', Gender: '', Category: '', Program: '', Payment: 'False', Password: '',
+    }
+  );
+  let name, value
+  const data = (e) =>
+  {
+    name = e.target.name;
+    value = e.target.value;
+    setUser({...user, [name]: value})
+  }
+
+  const getdata = (e) => 
+  {
+    const {Name, Email, Gender, Category, Program, Payment, Password} = user;
+    e.preventDefault();
+    const options = {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+          Name, Email, Gender, Category, Program, Payment, Password
+      })
+    }
+    const res = fetch('https://lead-management-36cec-default-rtdb.firebaseio.com/UserData.json',options)
+    if(res)
+    {
+      navigate("/dashboard")
+      alert("Application Submitted")
+    }
+    else
+    {
+      alert("Error occured")
+    }
+  }
 
 
   const sendEmail = async (emailjsData) => {
@@ -134,6 +172,7 @@ function Signup() {
             name="user_name"
             // label="Name"
             placeholder="STUDENT NAME"
+            value={user.Name}
             onChange={(event) =>
               setValues((prev) => ({ ...prev, name: event.target.value }))
             }
@@ -142,6 +181,7 @@ function Signup() {
             name="user_email"
             // label="Email"
             placeholder="STUDENT EMAIL ADDRESS"
+            value={user.Email}
             onChange={(event) =>
               setValues((prev) => ({ ...prev, email: event.target.value }))
             }
@@ -150,6 +190,7 @@ function Signup() {
             name="user_password"
             // label="Password"
             placeholder="STUDENT PASSWORD"
+            value={user.Password}
             onChange={(event) =>
               setValues((prev) => ({ ...prev, pass: event.target.value }))
             }
