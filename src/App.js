@@ -1,13 +1,12 @@
 import React, { useEffect, useState } from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-
 import Home from "./components/Home/Home";
 import Login from "./components/Login/Login";
 import Signup from "./components/Signup/Signup";
 import Form from "./components/Form/Form";
 import Checkout from "./components/Checkout/Checkout";
 import Dashboard from "./components/Dashboard/Dashboard";
-
+import { UserProvider } from "./components/UserContext";
 import { auth } from "./firebase";
 
 import "./App.css";
@@ -24,6 +23,7 @@ function App() {
   }, []);
 
   return (
+    <UserProvider>
     <div className="App">
       <Router>
         <Routes>
@@ -36,6 +36,7 @@ function App() {
         </Routes>
       </Router>
     </div>
+    </UserProvider>
   );
 }
 

@@ -1,15 +1,17 @@
 import React, { useState } from 'react'
 import Header from '../Header'
 import { Link ,useNavigate} from 'react-router-dom';
-
+import { useUser } from '../UserContext';
 const Form = () => {
 
   const navigate = useNavigate();
-  const [user, setUser] = useState(
-    {
-        Name: '', Email: '', Gender: '', Category: '', Program: '', Payment: 'True'
-    }
-  );
+
+  const {user,setUser} = useUser();
+  // const [user, setUser] = useState(
+  //   {
+  //       Name: '', Email: '', Gender: '', Category: '', Program: '', Payment: 'True'
+  //   }
+  // );
   
   let name, value
   console.log(user)
@@ -23,6 +25,7 @@ const Form = () => {
   const getdata = (e) => 
   {
     const {Name, Email, Gender, Category, Program, Payment} = user;
+    console.log("uuu",Name,user)
     e.preventDefault();
     const options = {
       method: 'POST',
@@ -36,7 +39,7 @@ const Form = () => {
     const res = fetch('https://lead-management-36cec-default-rtdb.firebaseio.com/UserData.json',options)
     if(res)
     {
-      navigate("/")
+      navigate("/Checkout")
       alert("Application Submitted")
     }
     else

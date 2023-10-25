@@ -3,7 +3,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { createUserWithEmailAndPassword, updateProfile } from "firebase/auth";
 import emailjs from 'emailjs-com';
 import Header from '../Header';
-
+import { useUser } from "../UserContext";
 import InputControl from "../InputControl/InputControl";
 import { auth } from "../../firebase";
 
@@ -12,11 +12,12 @@ import styles from "./Signup.module.css";
 function Signup() {
 
   //for putting data in realtime database
-  const [user, setUser] = useState(
-    {
-        Name: '', Email: '', Gender: '', Category: '', Program: '', Payment: 'False', Password: '',
-    }
-  );
+  // const [user, setUser] = useState(
+  //   {
+  //       Name: '', Email: '', Gender: '', Category: '', Program: '', Payment: 'False', Password: '',
+  //   }
+  // );
+  const { user, setUser } = useUser();
   let name, value
   // const data = (e) =>
   // {
