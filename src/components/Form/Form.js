@@ -7,7 +7,7 @@ const Form = () => {
   const navigate = useNavigate();
   const [user, setUser] = useState(
     {
-        Name: '', Email: '', Gender: '', Category: '', Program: '',
+        Name: '', Email: '', Gender: '', Category: '', Program: '', Payment: 'True'
     }
   );
   
@@ -22,7 +22,7 @@ const Form = () => {
 
   const getdata = (e) => 
   {
-    const {Name, Email, Gender, Category, Program} = user;
+    const {Name, Email, Gender, Category, Program, Payment} = user;
     e.preventDefault();
     const options = {
       method: 'POST',
@@ -30,7 +30,7 @@ const Form = () => {
         'Content-Type': 'application/json'
       },
       body: JSON.stringify({
-          Name, Email, Gender, Category, Program
+          Name, Email, Gender, Category, Program, Payment
       })
     }
     const res = fetch('https://lead-management-36cec-default-rtdb.firebaseio.com/UserData.json',options)
