@@ -90,7 +90,10 @@ module.exports = {
     extend: {
       colors:{
         "dark-purple" : "#081A51",
-        "light-white": "rgba(255,255,255,0.17)"
+        "light-white": "rgba(255,255,255,0.17)",
+        "zinc-800": "#333333",
+        "stone-50": "#F8F8F8",
+        "orange-500": "#FF6C0A"
       },
 
       borderRadius: {
