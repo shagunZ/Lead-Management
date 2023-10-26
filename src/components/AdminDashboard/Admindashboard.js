@@ -1,10 +1,11 @@
 import React, { useEffect, useState } from 'react'
 import Header from '../Header'
+import { Link } from 'react-router-dom';
 
 
 const Admindashboard = () => {
 
-console.log("found?",userPayment)
+  // console.log("found?",userPayment)
 
   const [data, setData] = useState([]);
 
@@ -36,14 +37,29 @@ console.log("found?",userPayment)
   return (
     <div>
       <Header />
-      <div className='container border'>
+      <div className='container '>
+
+        <div className='grid grid-cols-2  mt-8'>
+          <div className='m-auto text-accent-dark font-semibold'>Add Counsellor / Check Status of Counsellor</div>
+          <div>
+            <Link to='/Counsellor'>
+              <button className='px-8 py-3 bg-accent-dark rounded-lg font-semibold text-white'>ADD</button>
+            </Link>
+          </div>
+        </div>
+
         <div className='text-red font-semibold mt-4'>Students Registered</div>
-        <div className='p-4'>
+        <div className='p-4  '>
+          <div className='text-red grid grid-cols-3 text-sm font-semibold px-5'>
+            <div>STUDENT NAME</div>
+            <div>STUDENT EMAIL</div>
+            <div></div>
+          </div>
           {data.map((plan) => (
-            <div key={plan.Email} className=' container grid grid-flow-col  gap-2 justify-between p-4 rounded-lg shadow-xl'>
-              <div className='col-span-1 text-center'>{plan.Name}</div>
-              <div className='col-span-2 text-center'>{plan.Email}</div>
-              <div className='col-span-1 text-center'>Assign Counsellor</div>
+            <div key={plan.Email} className=' container grid grid-cols-3 gap-2 p-4 rounded-lg shadow-md'>
+              <div className=''>{plan.Name}</div>
+              <div className=''>{plan.Email}</div>
+              <div className=''>Assign Counsellor</div>
             </div>
           ))}
         </div>
