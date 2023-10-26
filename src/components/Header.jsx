@@ -23,8 +23,9 @@ const Header = () => {
             alt="The cover of Stubborn Attachments" />
           <div className="text-white font-bold text-lg">SMVDU Admissions</div>
           <div className="space-x-4">
-            <Link to='/login'><button className="text-white hover:text-jacarta-300 transition duration-300">Login</button></Link>
+            <Link to='/login'><button className="text-white hover:text-jacarta-300 transition duration-300">Student Login</button></Link>
             <Link to='/signup'><button className="text-white hover:text-jacarta-300 transition duration-300">Signup</button></Link>
+            <Link to='/AdminLogin'><button className="text-white hover:text-jacarta-300 transition duration-300">Admin Login</button></Link>
 
             <button className=" bg-accent hover:bg-accent-dark text-white font-bold py-2 px-4 rounded transition duration-300" onClick={handleLogout}>
               Logout
