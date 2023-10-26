@@ -4,8 +4,6 @@ import Header from '../Header'
 
 const Admindashboard = () => {
 
-console.log("found?",userPayment)
-
   const [data, setData] = useState([]);
 
   const fetchData = async () => {
