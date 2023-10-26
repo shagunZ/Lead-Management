@@ -10,6 +10,10 @@ import { UserProvider } from "./components/UserContext";
 import { auth } from "./firebase";
 
 import "./App.css";
+import PrivateRoute from "./components/PrivateRoute";
+import AdminLogin from "./components/AdminLogin/AdminLogin";
+import Admindashboard from "./components/AdminDashboard/Admindashboard";
+import Counsellor from "./components/Counsellor/Counsellor";
 
 function App() {
   const [userName, setUserName] = useState("");
@@ -24,18 +28,21 @@ function App() {
 
   return (
     <UserProvider>
-    <div className="App">
-      <Router>
-        <Routes>
-        <Route path="/signup" element={<Signup />} />
-          <Route path="/login" element={<Login />} />
-          <Route path="/Form" element={<Form />} />
-          <Route path="/Checkout" element={<Checkout />} />
-          <Route path="/Dashboard" element={<Dashboard name={userName} />} />
-          <Route path="/" element={<Home name={userName} />} />
-        </Routes>
-      </Router>
-    </div>
+      <div className="App">
+        <Router>
+          <Routes>
+            <Route path="/signup" element={<Signup />} />
+            <Route path="/login" element={<Login />} />
+            <Route path="/Form" element={<Form />} />
+            <Route path="/AdminLogin" element={<AdminLogin />} />
+            <Route path="/AdminDashboard" element={<Admindashboard />} />
+            <Route path="/Counsellor" element={<Counsellor />} />
+            <Route path="/Checkout" element={<Checkout />} />
+            <Route path="/Dashboard" element={<Dashboard name={userName} />} />
+            <Route path="/" element={<Home name={userName} />} />
+          </Routes>
+        </Router>
+      </div>
     </UserProvider>
   );
 }
