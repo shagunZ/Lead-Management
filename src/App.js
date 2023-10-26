@@ -10,6 +10,8 @@ import { UserProvider } from "./components/UserContext";
 import { auth } from "./firebase";
 
 import "./App.css";
+import Success from "./components/Success/Success";
+import Cancel from "./components/Cancel/Cancel";
 
 function App() {
   const [userName, setUserName] = useState("");
@@ -32,6 +34,8 @@ function App() {
           <Route path="/Form" element={<Form />} />
           <Route path="/Checkout" element={<Checkout />} />
           <Route path="/Dashboard" element={<Dashboard name={userName} />} />
+          <Route path="/success" element={<Success />} />
+          <Route path="/cancel" element={<Cancel />} />
           <Route path="/" element={<Home name={userName} />} />
         </Routes>
       </Router>
