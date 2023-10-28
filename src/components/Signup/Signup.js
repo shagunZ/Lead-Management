@@ -28,7 +28,7 @@ function Signup() {
 
   const getdata = (e) => 
   {
-    const {Name, Email, Gender, Category, Program, Payment, Password} = user;
+    const {Name, Email, Gender, Category, Program, Payment, Password,Counsellor} = user;
     e.preventDefault();
     const options = {
       method: 'POST',
@@ -36,7 +36,7 @@ function Signup() {
         'Content-Type': 'application/json'
       },
       body: JSON.stringify({
-          Name, Email, Gender, Category, Program, Payment, Password
+          Name, Email, Gender, Category, Program, Payment, Password,Counsellor
       })
     }
     const res = fetch('https://lead-management-36cec-default-rtdb.firebaseio.com/UserData.json',options)
@@ -107,9 +107,10 @@ function Signup() {
           Category:"", 
           Program:"",
            Payment:"False",
+           Counsellor:"None",
             Password:values.pass
         }; 
-        const {Name, Email, Gender, Category, Program, Payment, Password} = user;
+        const {Name, Email, Gender, Category, Program, Payment, Password,Counsellor} = user;
         e.preventDefault();
         console.log("fkjda",Name,user.displayName,user.email,user
         );
