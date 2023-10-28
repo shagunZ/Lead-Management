@@ -52,20 +52,20 @@ const Admindashboard = () => {
     if (selectedStudent && selectedCounsellor) {
 
       const usersRef = 'https://lead-management-36cec-default-rtdb.firebaseio.com/UserData.json';
-const response = await fetch(usersRef);
-const userData = await response.json();
+      const response = await fetch(usersRef);
+      const userData = await response.json();
 
-let userId = null;
+      let userId = null;
 
-// user's unique key
-for (const key in userData) {
-  if (userData[key].Email === selectedStudent.Email) {
-    userId = key;
-    console.log("fff",userData[key].Email)
-    break;
-  }
-}
-console.log("mila",selectedStudent.Email,userId)
+      // user's unique key
+      for (const key in userData) {
+        if (userData[key].Email === selectedStudent.Email) {
+          userId = key;
+          console.log("fff", userData[key].Email)
+          break;
+        }
+      }
+      console.log("mila", selectedStudent.Email, userId)
 
       try {
         const response = await fetch(
@@ -80,7 +80,7 @@ console.log("mila",selectedStudent.Email,userId)
             }),
           }
         );
-  
+
         if (response.ok) {
           console.log("sethogaya")
           toggleModal();
@@ -144,9 +144,9 @@ console.log("mila",selectedStudent.Email,userId)
               <div className='my-auto'>{plan.Email}</div>
               <div className='my-auto'>
                 <button onClick={() => {
-    setSelectedStudent(plan);
-    toggleModal();
-  }} className='bg-accent-dark text-white px-3 py-1 rounded-lg'>
+                  setSelectedStudent(plan);
+                  toggleModal();
+                }} className='bg-accent-dark text-white px-3 py-1 rounded-lg'>
                   Assign Counsellor
                 </button>
               </div>
@@ -155,31 +155,36 @@ console.log("mila",selectedStudent.Email,userId)
         </div>
 
         {modal && (
-          <div className="modal-content">
-            <h2 className='text-accent-dark font-semibold text-sm '>Assign Counsellor</h2>
-            <div className=' mt-3 p-2'>
-              <p>Selected Student: {selectedStudent.Name}</p>
-              <select
-                value={selectedCounsellor}
-                onChange={(e) => setSelectedCounsellor(e.target.value)}
-              >
-                <option value="">Select a Counsellor</option>
-                {counsdata.map((item) => (
-                  <option key={item.id} value={item.Email}>
-                    {item.Name}
-                  </option>
-                ))}
-              </select>
-              <button
-                onClick={assignCounsellor}
-                className='text-white bg-accent hover-bg-accent-dark px-4 py-1 rounded-lg'
-              >
-                Assign
+          <div className='modal'>
+            <div onClick={toggleModal} className='overlay'></div>
+            <div className="modal-content">
+              <h2 className='text-accent-dark font-semibold text-sm '>Assign Counsellor</h2>
+              <div className=' mt-3 p-2'>
+                <p className=' '> Selected Student: <p className='text-accent-dark inline-block'>{selectedStudent.Name}</p></p>
+                <div className=' mt-5'>
+                  <select
+                    value={selectedCounsellor}
+                    onChange={(e) => setSelectedCounsellor(e.target.value)}
+                  >
+                    <option value="">Select a Counsellor</option>
+                    {counsdata.map((item) => (
+                      <option key={item.id} value={item.Email}>
+                        {item.Name}
+                      </option>
+                    ))}
+                  </select>
+                  <button
+                    onClick={assignCounsellor}
+                    className='text-white bg-accent hover-bg-accent-dark px-4 py-1 rounded-lg ml-24'
+                  >
+                    Assign
+                  </button>
+                </div>
+              </div>
+              <button className="close-modal text-accent-dark" onClick={toggleModal}>
+                X
               </button>
             </div>
-            <button className="close-modal text-accent-dark" onClick={toggleModal}>
-              X
-            </button>
           </div>
         )}
 
