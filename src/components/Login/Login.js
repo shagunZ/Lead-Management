@@ -79,6 +79,11 @@ function Login() {
               <Link to="/signup">Sign up</Link>
             </span>
           </p>
+            <p>
+              <span>
+              <Link to="/AdminLogin">Admin Login</Link>
+              </span>
+            </p>
         </div>
       </div>
     </div>

@@ -1,17 +1,17 @@
 import React, { useEffect, useState } from 'react'
 import Header from '../Header';
-
+import { Link } from 'react-router-dom';
 const Counsellor = () => {
     const [data, setData] = useState([]);
 
     const [user, setUser] = useState(
         {
-            Name: '', Email: '', Mobile: '',
+            Name: '', Email: '', Mobile: '', Count: 0,
         }
     );
 
     const getdata = (e) => {
-        const { Name, Email, Mobile } = user;
+        const { Name, Email, Mobile,Count } = user;
         e.preventDefault();
         const options = {
             method: 'POST',
@@ -19,7 +19,7 @@ const Counsellor = () => {
                 'Content-Type': 'application/json'
             },
             body: JSON.stringify({
-                Name, Email, Mobile
+                Name, Email, Mobile, Count
             })
         }
         const res = fetch('https://lead-counsellor-default-rtdb.firebaseio.com/UserData.json', options)
@@ -40,6 +40,7 @@ const Counsellor = () => {
                 const responseData = await response.json();
                 console.log(responseData)
                 const dataArray = Object.values(responseData || {});
+                dataArray.sort((a, b) => b.Count - a.Count);
                 setData(dataArray);
             } else {
                 console.error('Request failed with status', response.status);
@@ -59,6 +60,11 @@ const Counsellor = () => {
         <div>
             <Header />
             <div className='container '>
+            <Link to='/AdminDashboard'>
+                <button class="m-3 font-semibold bg-accent text-white p-2 rounded hover:bg-accent-dark transition duration-300">
+                    GO BACK 
+               </button>
+               </Link>
                 <div className=" py-6 flex items-center justify-center mt-6">
                     <div className="bg-white p-8 rounded shadow-lg md:w-1/2 sm:w-full">
                         <h2 className=" text-red text-2xl font-semibold mb-4 text-center">ADD NEW COUNSELLOR</h2>

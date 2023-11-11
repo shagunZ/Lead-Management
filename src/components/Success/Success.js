@@ -12,21 +12,17 @@ const navigate = useNavigate();
     auth.onAuthStateChanged((user) => {
       if (user) {
         setUserEmail(user.email);
+        
       } else setUserEmail("");
     });
   }, []);
   console.log(userEmail);
 
-  // const [user, setUser] = useState(
-  //   {
-  //     Email: userEmail,Payment:"False",
-  //   }
-  // );
+ 
   const getdata =async (e) => 
   {
     // const {Email,Payment} = user;
     e.preventDefault();
-
 ///
 const usersRef = 'https://lead-management-36cec-default-rtdb.firebaseio.com/UserData.json';
 const response = await fetch(usersRef);
@@ -41,8 +37,51 @@ for (const key in userData) {
     break;
   }
 }
+
+console.log("counsellor assigned was: ",userData[userId].counsellor)
 console.log("mila",userEmail,userId)
 ///
+
+
+
+/////////////////////////////////UPDATING COUNSELLOR'S COUNT HERE!!!!!!!!!!!!!!!!!!
+const counsellorRef = 'https://lead-counsellor-default-rtdb.firebaseio.com/UserData.json';
+const counsellorresponse = await fetch(counsellorRef);
+const counsellorData = await counsellorresponse.json();
+console.log("counserllordata here:",counsellorData)
+let counsellorId = null;
+
+for (const key in counsellorData) {
+  if (counsellorData[key].Email === userData[userId].counsellor) {
+    counsellorId = key;
+    break;
+  }
+}
+
+console.log("cidcount",counsellorData[counsellorId].Count);
+const prevCount = counsellorData[counsellorId].Count;
+if (counsellorId) {
+  const updatedCounsellorData = {
+    Count: prevCount+1,
+}
+    const options = {
+      method: 'PATCH',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(updatedCounsellorData)
+    }
+    const res = await fetch(`https://lead-counsellor-default-rtdb.firebaseio.com/UserData/${counsellorId}.json`, options);
+    if(res)
+    {
+      console.log("updated the count!")
+    }
+    else
+    {
+     console.log("err")
+    }
+  }
+//////////////////////////////////////////////////////////////
 if (userId) {
   const updatedUserData = {
     Payment:"True"
@@ -58,6 +97,7 @@ if (userId) {
     if(res)
     {
       navigate("/dashboard")
+      console.log("userpayment updated")
       alert("Application Submitted")
     }
     else
@@ -66,7 +106,7 @@ if (userId) {
     }
   }
 };
-
+///////////getdata function ends here
 
   return (
     <div>
