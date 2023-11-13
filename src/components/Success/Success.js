@@ -16,7 +16,7 @@ const navigate = useNavigate();
       } else setUserEmail("");
     });
   }, []);
-  console.log(userEmail);
+  console.log("userEmail",userEmail);
 
  
   const getdata =async (e) => 
@@ -38,8 +38,8 @@ for (const key in userData) {
   }
 }
 
-console.log("counsellor assigned was: ",userData[userId].counsellor)
 console.log("mila",userEmail,userId)
+console.log("counsellor assigned was: ", userData[userId]?.counsellor);
 ///
 
 

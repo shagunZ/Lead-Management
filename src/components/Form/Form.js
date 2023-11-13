@@ -2,6 +2,7 @@ import React, { useState,useEffect } from 'react'
 import Header from '../Header'
 import { Link ,useNavigate} from 'react-router-dom';
 import { auth } from '../../firebase';
+
 const Form = () => {
   const [userEmail, setUserEmail] = useState("");
 
@@ -82,17 +83,18 @@ if (userId) {
   return (
     <div className='w-full'>
       <Header/>
-      <div className=" py-6 flex items-center justify-center bg-jacarta-100">
-      <div className="bg-white p-8 rounded shadow-lg md:w-3/4 sm:w-96">
-        <h2 className=" text-red text-2xl font-semibold mb-4 text-center">SMVDU Admission Form</h2>
+      <div className="formbanner py-6 flex items-center justify-center bg-jacarta-100">
+      <div className="bg-jacarta-50 p-8 rounded shadow-lg md:w-1/2 sm:w-96">
+        <h2 className=" text-accent text-2xl font-semibold mb-4 text-center">SMVDU Admission Form</h2>
 
         <form method='POST' action='' id='admissionForm'>
           <div className="mb-4">
-            <label className="block text-sm font-medium text-jacarta-600">Full Name</label>
+            <label className="block text-sm font-medium text-jacarta-600">FULL NAME</label>
             <input
+             className=" mt-1 p-2 w-full outline-none border-b bg-transparent border-jacarta-300 hover:border-jacarta-800"
               type="text"
               name='Name'
-              className="mt-1 p-2 w-full border border-jacarta-300 outline-none rounded-md"
+              // className="mt-1 p-2 w-full border border-jacarta-300 outline-none rounded-md"
               placeholder="John Doe"
               value={user.Name}
               onChange={data}
@@ -101,11 +103,11 @@ if (userId) {
           </div>
 
           <div className="mb-4">
-            <label className="block text-sm font-medium text-jacarta-600">Email</label>
+            <label className="block text-sm font-medium text-jacarta-600">EMAIL</label>
             <input
               type="email"
               name='Email'
-              className=" mt-1 p-2 w-full outline-none border border-jacarta-300 rounded-md"
+              className=" mt-1 p-2 w-full outline-none border-b bg-transparent border-jacarta-300 hover:border-jacarta-800"
               placeholder="john@example.com"
               value={user.Email}
               onChange={data}
@@ -114,8 +116,10 @@ if (userId) {
           </div>
 
           <div className="mb-4">
-            <label className="block text-sm font-medium text-jacarta-600">Gender</label>
-            <select name='Gender' value={user.Gender} onChange={data} className="mt-1 p-2 w-full border rounded-md border-jacarta-300 text-jacarta-600 outline-none" required>
+            <label className="block text-sm font-medium text-jacarta-600">GENDER</label>
+            <select
+             className=" mt-1 p-2 w-full outline-none border-b bg-transparent border-jacarta-300 hover:border-jacarta-800"
+             name='Gender' value={user.Gender} onChange={data} required>
               <option selected>Select Gender</option>
               <option >Male</option>
               <option >Female</option>
@@ -124,8 +128,8 @@ if (userId) {
           </div>
 
           <div className="mb-4">
-            <label className="block text-sm font-medium text-jacarta-600">Category</label>
-            <select name='Category' value={user.Category} onChange={data} className="mt-1 p-2 w-full border rounded-md border-jacarta-300 text-jacarta-600 outline-none" required>
+            <label className="block text-sm font-medium text-jacarta-600">CATEGORY</label>
+            <select name='Category' value={user.Category} onChange={data}                                     className=" mt-1 p-2 w-full outline-none border-b bg-transparent border-jacarta-300 hover:border-jacarta-800" required>
               <option  selected>Select Category</option>
               <option >General</option>
               <option >EWS</option>
@@ -135,8 +139,8 @@ if (userId) {
             </select>
           </div>
           <div className="mb-4">
-            <label className="block text-sm font-medium text-jacarta-600">Select Program</label>
-            <select name='Program' value={user.Program} onChange={data} className="mt-1 p-2 w-full border rounded-md border-jacarta-300 text-jacarta-600 outline-none" required>
+            <label className="block text-sm font-medium text-jacarta-600">SELECT PROGRAM</label>
+            <select name='Program' value={user.Program} onChange={data} className=" mt-1 p-2 w-full outline-none border-b bg-transparent border-jacarta-300 hover:border-jacarta-800" required>
               <option selected>Select a program</option>
               <option >Computer Science</option>
               <option >Engineering</option>
@@ -144,7 +148,7 @@ if (userId) {
             </select>
           </div>
           <div className="mb-4">
-            <label className="block text-sm font-medium text-jacarta-600">Upload Documents</label>
+            <label className="block text-sm font-medium text-jacarta-600">UPLOAD DOCUMENTS</label>
             <input name='document' value={user.document} onChange={data} type="file" className="mt-1 w-full" accept=".pdf,.docx,.jpg,.png"  />
           </div>
           <div className="mt-6">
@@ -154,7 +158,7 @@ if (userId) {
               className="w-full bg-accent text-white p-2 rounded hover:bg-accent-dark transition duration-300"
               onClick={getdata}
             >
-              Submit Application
+              SUBMIT APPLICATION
             </button>
             </Link>
           </div>

@@ -17,7 +17,8 @@ export const UserProvider = ({ children }) => {
     Program: "",
     Payment: "False",
     Password: "",
-    Counsellor:"None"
+    Counsellor:"None",
+    Cname:""
   });
 
   // Add functions to update user data

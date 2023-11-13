@@ -36,7 +36,7 @@ const Admindashboard = () => {
       const response = await fetch(url);
       if (response.ok) {
         const responseData = await response.json();
-        console.log(responseData)
+        console.log("res",responseData)
         const dataArray = Object.values(responseData || {});
         setCounsdata(dataArray);
       } else {
@@ -68,6 +68,9 @@ const Admindashboard = () => {
       console.log("mila", selectedStudent.Email, userId)
 
       try {
+        const counsellorInfo = counsdata.find(item => item.Email === selectedCounsellor);
+      const counsellorName = counsellorInfo ? counsellorInfo.Name : '';
+      console.log("naam",counsellorName)
         const response = await fetch(
           `https://lead-management-36cec-default-rtdb.firebaseio.com/UserData/${userId}.json`,
           {
@@ -76,7 +79,8 @@ const Admindashboard = () => {
               'Content-Type': 'application/json',
             },
             body: JSON.stringify({
-              counsellor: selectedCounsellor
+              counsellor: selectedCounsellor,
+              Cname: counsellorName,
             }),
           }
         );
@@ -92,7 +96,7 @@ const Admindashboard = () => {
       }
     }
     setSelectedCounsellor(counsellor)
-    console.log(selectedCounsellor);
+    console.log("c",selectedCounsellor);
     console.log("fkdj");
     console.log(selectedStudent)
     console.log(selectedCounsellor);
@@ -133,18 +137,22 @@ const Admindashboard = () => {
 
         <div className='text-stone-50 font-semibold mt-4 text-center'>STUDENTS REGISTERED</div>
         <div className='py-4 pb-12'>
-          <div className=' text-stone-50 grid grid-cols-4 text-sm font-semibold px-5  py-5 rounded-t-lg bg-jacarta-600'>
+          <div className=' text-stone-50 grid grid-cols-5 text-sm font-semibold px-5  py-5 rounded-t-lg bg-jacarta-600'>
             <div>STUDENT NAME</div>
             <div>STUDENT EMAIL</div>
             <div>FEE STATUS</div>
+            <div>COUNSELLOR</div>
             <div>ASSIGN COUNSELLOR</div>
           </div>
           {data.map((plan,index) => (
-            <div key={plan.Email} className={ index % 2 === 0 ? 'container grid grid-cols-4 gap-2 px-4 py-3 bg-jacarta-100' : 'container grid grid-cols-4 gap-2 px-4 py-3 bg-jacarta-50'}>
+            <div key={plan.Email} className={ index % 2 === 0 ? 'container grid grid-cols-5 gap-2 px-4 py-3 bg-jacarta-100' : 'container grid grid-cols-5 gap-2 px-4 py-3 bg-jacarta-50'}>
               <div className='my-auto'>{plan.Name}</div>
               <div className='my-auto'>{plan.Email}</div>
               <div>
                 {plan.Payment}
+              </div>
+              <div>
+                {plan.Cname}
               </div>
               <div className='my-auto'>
                 <button onClick={() => {
