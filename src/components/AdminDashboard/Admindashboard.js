@@ -118,30 +118,34 @@ const Admindashboard = () => {
 
 
   return (
-    <div>
+    <div className='admindashboardbanner'>
       <Header />
       <div className='container '>
 
-        <div className='grid grid-cols-2  mt-8'>
-          <div className='m-auto text-accent-dark font-semibold'>Add Counsellor / Check Status of Counsellor</div>
-          <div>
+        <div className='grid grid-cols-2 bg-jacarta-600 rounded-lg text-stone-50 mt-8'>
+          <div className='m-auto font-semibold py-4'>Add Counsellor / Check Status of Counsellor</div>
+          <div className='m-auto'>
             <Link to='/Counsellor'>
-              <button className='px-8 py-3 bg-accent-dark rounded-lg font-semibold text-white'>ADD</button>
+              <button className='px-8 py-2 bg-accent-dark rounded-lg font-semibold text-white'>ADD</button>
             </Link>
           </div>
         </div>
 
-        <div className='text-red font-semibold mt-4'>Students Registered</div>
-        <div className='p-4  '>
-          <div className='text-red grid grid-cols-3 text-sm font-semibold px-5'>
+        <div className='text-stone-50 font-semibold mt-4 text-center'>STUDENTS REGISTERED</div>
+        <div className='py-4 pb-12'>
+          <div className=' text-stone-50 grid grid-cols-4 text-sm font-semibold px-5  py-5 rounded-t-lg bg-jacarta-600'>
             <div>STUDENT NAME</div>
             <div>STUDENT EMAIL</div>
-            <div></div>
+            <div>FEE STATUS</div>
+            <div>ASSIGN COUNSELLOR</div>
           </div>
-          {data.map((plan) => (
-            <div key={plan.Email} className=' container grid grid-cols-3 gap-2 p-4 rounded-lg shadow-md'>
+          {data.map((plan,index) => (
+            <div key={plan.Email} className={ index % 2 === 0 ? 'container grid grid-cols-4 gap-2 px-4 py-3 bg-jacarta-100' : 'container grid grid-cols-4 gap-2 px-4 py-3 bg-jacarta-50'}>
               <div className='my-auto'>{plan.Name}</div>
               <div className='my-auto'>{plan.Email}</div>
+              <div>
+                {plan.Payment}
+              </div>
               <div className='my-auto'>
                 <button onClick={() => {
                   setSelectedStudent(plan);

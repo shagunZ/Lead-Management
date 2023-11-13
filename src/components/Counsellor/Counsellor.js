@@ -11,7 +11,7 @@ const Counsellor = () => {
     );
 
     const getdata = (e) => {
-        const { Name, Email, Mobile,Count } = user;
+        const { Name, Email, Mobile, Count } = user;
         e.preventDefault();
         const options = {
             method: 'POST',
@@ -57,25 +57,21 @@ const Counsellor = () => {
 
 
     return (
-        <div>
+        <div className='counsellorbanner'>
             <Header />
             <div className='container '>
-            <Link to='/AdminDashboard'>
-                <button class="m-3 font-semibold bg-accent text-white p-2 rounded hover:bg-accent-dark transition duration-300">
-                    GO BACK 
-               </button>
-               </Link>
+                
                 <div className=" py-6 flex items-center justify-center mt-6">
-                    <div className="bg-white p-8 rounded shadow-lg md:w-1/2 sm:w-full">
-                        <h2 className=" text-red text-2xl font-semibold mb-4 text-center">ADD NEW COUNSELLOR</h2>
+                    <div className=" p-8 rounded shadow-lg md:w-1/2 sm:w-full bg-jacarta-50">
+                        <h2 className=" text-accent-dark text-2xl font-semibold mb-4 text-center">ADD NEW COUNSELLOR</h2>
 
                         <form method='POST' action=''>
                             <div className="mb-4">
-                                <label className="block text-sm font-medium text-jacarta-600">FULL NAME</label>
+                                <label className="block text-sm font-medium text-jacarta-800">FULL NAME</label>
                                 <input
                                     type="text"
                                     name='Name'
-                                    className="mt-1 p-2 w-full border border-jacarta-300 outline-none rounded-md"
+                                    className="mt-1 p-2 w-full bg-transparent border-b border-jacarta-300 hover:border-jacarta-800 outline-none"
                                     placeholder="John Doe"
                                     value={user.Name}
                                     onChange={(event) => setUser((prev) => ({ ...prev, Name: event.target.value }))}
@@ -84,11 +80,11 @@ const Counsellor = () => {
                             </div>
 
                             <div className="mb-4">
-                                <label className="block text-sm font-medium text-jacarta-600">EMAIL</label>
+                                <label className="block text-sm font-medium text-jacarta-800">EMAIL</label>
                                 <input
                                     type="email"
                                     name='Email'
-                                    className=" mt-1 p-2 w-full outline-none border border-jacarta-300 rounded-md"
+                                    className=" mt-1 p-2 w-full outline-none border-b bg-transparent border-jacarta-300 hover:border-jacarta-800"
                                     placeholder="john@example.com"
                                     value={user.Email}
                                     onChange={(event) => setUser((prev) => ({ ...prev, Email: event.target.value }))}
@@ -97,11 +93,11 @@ const Counsellor = () => {
                             </div>
 
                             <div className="mb-4">
-                                <label className="block text-sm font-medium text-jacarta-600">EMAIL</label>
+                                <label className="block text-sm font-medium text-jacarta-800">MOBILE NUMBER</label>
                                 <input
                                     type="number"
                                     name='Phone'
-                                    className=" mt-1 p-2 w-full outline-none border border-jacarta-300 rounded-md"
+                                    className=" mt-1 p-2 w-full outline-none border-b bg-transparent border-jacarta-300 hover:border-jacarta-800"
                                     placeholder="0000000000"
                                     value={user.Mobile}
                                     onChange={(event) => setUser((prev) => ({ ...prev, Mobile: event.target.value }))}
@@ -125,23 +121,32 @@ const Counsellor = () => {
 
                 </div>
 
-                <div className='text-red font-semibold'>
-                    Counsellors Detail
+                <div className='text-center text-stone-50 font-semibold'>
+                    COUNSELLORS RANKING
                 </div>
 
-                <div className='p-4 '>
-                    <div className='text-red grid grid-cols-3 text-sm font-semibold text-center'>
+                <div className='py-4 text-center pb-12'>
+                    <div className='text-stone-50 grid grid-cols-4 text-sm font-semibold px-5  py-5 rounded-t-lg bg-jacarta-600'>
                         <div>COUNSELLOR NAME</div>
                         <div>COUNSELLOR EMAIL</div>
                         <div>COUNSELLOR PHONE</div>
+                        <div>TOTAL FEE PAID STUDENTS</div>
                     </div>
-                    {data.map((plan) => (
-                        <div key={plan.Email} className=' container grid grid-cols-3 gap-2 p-4 rounded-md shadow-md text-center'>
+                    {data.map((plan, index) => (
+                        <div key={plan.Email} className={index % 2 === 0 ? 'container grid grid-cols-4 gap-2 px-4 py-3 bg-jacarta-100' : 'container grid grid-cols-4 gap-2 px-4 py-3 bg-jacarta-50'}>
                             <div className=' '>{plan.Name}</div>
                             <div className=' '>{plan.Email}</div>
                             <div className=' '>{plan.Mobile}</div>
+                            <div className=' '>{plan.Count}</div>
                         </div>
                     ))}
+                </div>
+                <div className='text-center'>
+                <Link to='/AdminDashboard'>
+                    <button class="m-3 font-semibold bg-accent text-white p-2 px-6 text-md rounded hover:bg-accent-dark transition duration-300">
+                        GO BACK
+                    </button>
+                </Link>
                 </div>
             </div>
         </div>
