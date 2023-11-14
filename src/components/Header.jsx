@@ -17,10 +17,10 @@ const Header = () => {
 
   return (
     <div>
-      <nav className="bg-jacarta-800 p-2 bg-[#00007a;]  border">
+      <nav className="bg-jacarta-800 p-2 bg-[#00007a;]  ">
         <div className="container mx-auto flex justify-between items-center">
-          <img className="checkoutImg" src="https://th.bing.com/th/id/OIP.71hLPhAxg6afbJUZdkGlQgHaHR?pid=ImgDet&rs=1"
-            alt="The cover of Stubborn Attachments" />
+          <img className="checkoutImg" src="https://www.careeryojana.in/wp-content/uploads/2021/04/SMVDU-University.png"
+            alt="logo" />
           <div className="text-white font-bold text-lg">SMVDU Admissions</div>
           <div className="space-x-4">
             <Link to='/login'><button className="text-white hover:text-jacarta-300 transition duration-300">Student Login</button></Link>

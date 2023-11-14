@@ -43,9 +43,8 @@
     box-sizing: border-box;
   }
   .checkoutImg {
-    border-radius: 6px;
     margin: 10px;
-    width: 54px;
+    width: 74px;
     height: 57px;
   }
   .checkH3,
@@ -133,8 +132,22 @@
     position: relative;
     background-repeat: no-repeat;
     background-size: cover;
-    
-    /* border-radius: 0 0 100px 100px; */
     background-blend-mode: overlay;
     background-color: rgba(7, 9, 10, 0.9);
+  }
+  .studentdashboardbanner{
+    background-image: url('https://xgeeksweb.com/wp-content/uploads/2023/06/DSC_0008aaaa-1.jpg');
+    content: "";
+    position: relative;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-blend-mode: overlay;
+    background-color: rgba(7, 9, 10, 0.8);
+  }
+
+  .studentdashboard{
+    background-image: url("https://www.careeryojana.in/wp-content/uploads/2021/04/SMVDU-University.png");
+    background-position: center center;
+    background-repeat: no-repeat;
+    border: 2px solid red;
   }
