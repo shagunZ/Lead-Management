@@ -126,7 +126,7 @@ const Counsellor = () => {
                 </div>
 
                 <div className='py-4 text-center pb-12'>
-                    <div className='text-stone-50 grid grid-cols-4 text-sm font-semibold px-5  py-5 rounded-t-lg bg-jacarta-600'>
+                    <div className='text-stone-50 grid grid-cols-4 text-sm font-semibold px-5  py-5 rounded-t-lg bg-jacarta-800'>
                         <div>COUNSELLOR NAME</div>
                         <div>COUNSELLOR EMAIL</div>
                         <div>COUNSELLOR PHONE</div>

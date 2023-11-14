@@ -126,7 +126,7 @@ const Admindashboard = () => {
       <Header />
       <div className='container '>
 
-        <div className='grid grid-cols-2 bg-jacarta-600 rounded-lg text-stone-50 mt-8'>
+        <div className='grid grid-cols-2 bg-jacarta-800 rounded-lg text-stone-50 mt-8'>
           <div className='m-auto font-semibold py-4'>Add Counsellor / Check Status of Counsellor</div>
           <div className='m-auto'>
             <Link to='/Counsellor'>
@@ -137,7 +137,7 @@ const Admindashboard = () => {
 
         <div className='text-stone-50 font-semibold mt-4 text-center'>STUDENTS REGISTERED</div>
         <div className='py-4 pb-12'>
-          <div className=' text-stone-50 grid grid-cols-5 text-sm font-semibold px-5  py-5 rounded-t-lg bg-jacarta-600'>
+          <div className=' text-stone-50 grid grid-cols-5 text-sm font-semibold px-5  py-5 rounded-t-lg bg-jacarta-800'>
             <div>STUDENT NAME</div>
             <div>STUDENT EMAIL</div>
             <div>FEE STATUS</div>
@@ -148,10 +148,10 @@ const Admindashboard = () => {
             <div key={plan.Email} className={ index % 2 === 0 ? 'container grid grid-cols-5 gap-2 px-4 py-3 bg-jacarta-100' : 'container grid grid-cols-5 gap-2 px-4 py-3 bg-jacarta-50'}>
               <div className='my-auto'>{plan.Name}</div>
               <div className='my-auto'>{plan.Email}</div>
-              <div>
+              <div className=' my-auto'>
                 {plan.Payment}
               </div>
-              <div>
+              <div className=' my-auto'>
                 {plan.Cname}
               </div>
               <div className='my-auto'>
