@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import Header from '../Header'
 import { Link } from 'react-router-dom';
 import './modal.css';
-
+import emailjs from 'emailjs-com';
 const Admindashboard = () => {
 
   // console.log("found?",userPayment)
@@ -119,6 +119,61 @@ const Admindashboard = () => {
     document.body.classList.remove('active-modal')
   }
 
+  const sendEmail = async (emailjsData) => {
+    try {
+      const result = await emailjs.send('service_mh0e5py', 'template_mucn38u', emailjsData, 'm7qRVKrwr_uw25qQ1');
+      console.log(result.text);
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
+  
+  const sendReminderEmails = async () => {
+
+    const studentsWithFalsePayment = data.filter((student) => student.Payment === "False");
+    const studentEmails = studentsWithFalsePayment.map((student) => student.Email);
+    
+    const emailjsData = {
+      user_email: studentEmails.join(','), // Combine emails into a single string
+    };
+    try {
+      if (studentEmails.length > 0) {
+        await sendEmail(emailjsData);
+        console.log(`Reminder email sent to students with false payment`);
+        alert("Payment mail sent to all");
+      } else {
+        console.log(`No students with false payment found`);
+      }
+    } catch (error) {
+      console.error('Error sending reminder email:', error);
+    }
+  };
+
+  const sendEmailtoall = async (emailjsData) => {
+    try {
+      const result = await emailjs.send('service_mh0e5py', 'template_7azoe14', emailjsData, 'm7qRVKrwr_uw25qQ1');
+      console.log(result.text);
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
+
+  const sendReminderEmailstoall = async () => {
+    const studentEmails = data.map((student) => student.Email);
+    
+    const emailjsData = {
+      user_email: studentEmails.join(','), // Combine emails into a single string
+    };
+    try {
+        await sendEmailtoall(emailjsData);
+        console.log(`sent to all students`);
+        alert("Email sent to all Students");
+    } catch (error) {
+      console.error('Error sending reminder email:', error);
+    }
+  };
 
 
   return (
@@ -135,7 +190,7 @@ const Admindashboard = () => {
           </div>
         </div>
 
-        <div className='text-stone-50 font-semibold mt-4 text-center'>STUDENTS REGISTERED</div>
+
         <div className='py-4 pb-12'>
           <div className=' text-stone-50 grid grid-cols-5 text-sm font-semibold px-5  py-5 rounded-t-lg bg-jacarta-800'>
             <div>STUDENT NAME</div>
@@ -199,6 +254,19 @@ const Admindashboard = () => {
             </div>
           </div>
         )}
+
+<div className='grid grid-flow-col'> 
+  <div className='text-stone-50 font-semibold mt-4 text-center'>
+          <button onClick={sendReminderEmailstoall} className='px-8 py-2 m-5 bg-accent-dark rounded-lg font-semibold text-white'>
+            Send Reminder to All
+          </button>
+        </div>
+  <div className='text-stone-50 font-semibold mt-4 text-center'>
+          <button onClick={sendReminderEmails} className='px-8 py-2 m-5 bg-accent-dark rounded-lg font-semibold text-white'>
+            Send Payment Reminder
+          </button>
+        </div>
+</div>
 
       </div>
     </div>

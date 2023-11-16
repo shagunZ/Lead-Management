@@ -3,20 +3,36 @@ import { useState,useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import { auth } from '../../firebase'
 import { useNavigate } from 'react-router-dom'
+import emailjs from 'emailjs-com';
 
 const Success = () => {
 const navigate = useNavigate();
   const [userEmail, setUserEmail] = useState("");
+  const [userName, setUserName] = useState("");
 
   useEffect(() => {
     auth.onAuthStateChanged((user) => {
       if (user) {
+        setUserName(user.displayName)
         setUserEmail(user.email);
         
       } else setUserEmail("");
     });
   }, []);
+
   console.log("userEmail",userEmail);
+
+
+
+  const sendEmail = async (emailjsData) => {
+    try {
+      const result = await emailjs.send('service_219robq', 'template_r5ge0bj', emailjsData, '1-Y5d5TGmZp1y_gYP');
+      console.log(result.text);
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
 
  
   const getdata =async (e) => 
@@ -80,6 +96,14 @@ if (counsellorId) {
     {
      console.log("err")
     }
+
+
+    const emailjsData = {
+      user_name: userName,
+      user_email: userEmail,
+    };
+    sendEmail(emailjsData);
+    console.log("emailsent")
   }
 //////////////////////////////////////////////////////////////
 if (userId) {

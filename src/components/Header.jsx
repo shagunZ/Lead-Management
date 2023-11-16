@@ -2,6 +2,7 @@ import React from 'react'
 import { Link, useNavigate } from "react-router-dom";
 import { signInWithEmailAndPassword, signOut } from "firebase/auth";
 import { auth } from '../firebase'
+
 const Header = () => {
 
   const navigate = useNavigate()
@@ -19,9 +20,13 @@ const Header = () => {
     <div>
       <nav className="bg-jacarta-800 p-2 bg-[#00007a;]  ">
         <div className="container mx-auto flex justify-between items-center">
+        <Link to="/dashboard">
           <img className="checkoutImg" src="https://www.careeryojana.in/wp-content/uploads/2021/04/SMVDU-University.png"
             alt="logo" />
+            </Link>
+            <Link to="/dashboard">
           <div className="text-white font-bold text-lg">SMVDU Admissions</div>
+            </Link>
           <div className="space-x-4">
             <Link to='/login'><button className="text-white hover:text-jacarta-300 transition duration-300">Student Login</button></Link>
             <Link to='/signup'><button className="text-white hover:text-jacarta-300 transition duration-300">Signup</button></Link>

@@ -71,8 +71,8 @@ if (userId) {
     const res = await fetch(`https://lead-management-36cec-default-rtdb.firebaseio.com/UserData/${userId}.json`, options);
     if(res)
     {
-      navigate("/Checkout")
-      alert("Application Submitted")
+      navigate("/dashboard")
+      alert("Application Submitted, Kindly Proceed to Payment")
     }
     else
     {

@@ -107,7 +107,7 @@ function Signup() {
           Category:"", 
           Program:"",
            Payment:"False",
-           Counsellor:"None",
+           counsellor:"demosmvdu@gmail.com",
             Password:values.pass,
             Cname:""
         }; 

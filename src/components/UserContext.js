@@ -17,7 +17,7 @@ export const UserProvider = ({ children }) => {
     Program: "",
     Payment: "False",
     Password: "",
-    Counsellor:"None",
+    counsellor:"demosmvdu@gmail.com",
     Cname:""
   });
 

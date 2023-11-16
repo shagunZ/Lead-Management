@@ -2,7 +2,7 @@ import React from 'react'
 import { signInWithEmailAndPassword, signOut } from "firebase/auth";
 import { useNavigate } from 'react-router-dom';
 import { auth } from '../firebase';
-
+import { Link } from 'react-router-dom';
 const Sidebar = () => {
   const navigate = useNavigate()
   function handleLogout() {
@@ -60,9 +60,11 @@ const Sidebar = () => {
               </g>
             </svg>
           </div>
+          <Link to='/Checkout'>
           <div className='text-white text-sm font-semibold leading-relaxed'>
             Payments
           </div>
+          </Link>
         </div>
      
       </div>
