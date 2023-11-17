@@ -151,3 +151,28 @@
     background-repeat: no-repeat;
     border: 2px solid red;
   }
+
+  .landingbanner{
+    background-image: url('https://www.cuchd.in/admissions/images/admission-banner.jpg');
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-position: center;
+    height: 80vh;
+    background-blend-mode: overlay;
+    background-color: rgba(27,27,27,0.9);
+  }
+
+  .landingactivity{
+    transition: 0.6s;
+  }
+
+  .landingactivity:hover{
+    transform: scale(1.05);
+  }
+
+  .applybutton{
+    transition: 0.5s;
+  }
+  .applybutton:hover{
+    transform: scale(1.05);
+  }
