@@ -36,7 +36,7 @@ const Admindashboard = () => {
       const response = await fetch(url);
       if (response.ok) {
         const responseData = await response.json();
-        console.log("res",responseData)
+        console.log("res", responseData)
         const dataArray = Object.values(responseData || {});
         setCounsdata(dataArray);
       } else {
@@ -69,8 +69,8 @@ const Admindashboard = () => {
 
       try {
         const counsellorInfo = counsdata.find(item => item.Email === selectedCounsellor);
-      const counsellorName = counsellorInfo ? counsellorInfo.Name : '';
-      console.log("naam",counsellorName)
+        const counsellorName = counsellorInfo ? counsellorInfo.Name : '';
+        console.log("naam", counsellorName)
         const response = await fetch(
           `https://lead-management-36cec-default-rtdb.firebaseio.com/UserData/${userId}.json`,
           {
@@ -96,7 +96,7 @@ const Admindashboard = () => {
       }
     }
     setSelectedCounsellor(counsellor)
-    console.log("c",selectedCounsellor);
+    console.log("c", selectedCounsellor);
     console.log("fkdj");
     console.log(selectedStudent)
     console.log(selectedCounsellor);
@@ -122,13 +122,13 @@ const Admindashboard = () => {
 
 
   return (
-    <div className='admindashboardbanner'>
+    <div className='admindashboardbanner md:h-full sm:h-screen'>
       <Header />
       <div className='container '>
 
         <div className='grid grid-cols-2 bg-jacarta-800 rounded-lg text-stone-50 mt-8'>
-          <div className='m-auto font-semibold py-4'>Add Counsellor / Check Status of Counsellor</div>
-          <div className='m-auto'>
+          <div className=' my-auto font-semibold py-6 px-8'>Add Counsellor / Check Status of Counsellor</div>
+          <div className=' my-auto text-center'>
             <Link to='/Counsellor'>
               <button className='px-8 py-2 bg-accent-dark rounded-lg font-semibold text-white'>ADD</button>
             </Link>
@@ -136,34 +136,36 @@ const Admindashboard = () => {
         </div>
 
         <div className='text-stone-50 font-semibold mt-4 text-center'>STUDENTS REGISTERED</div>
-        <div className='py-4 pb-12'>
-          <div className=' text-stone-50 grid grid-cols-5 text-sm font-semibold px-5  py-5 rounded-t-lg bg-jacarta-800'>
-            <div>STUDENT NAME</div>
+        <div className='py-4 pb-12  md:inline-block sm:flex '>
+          <div className=' text-stone-50 grid md:grid-cols-5 text-sm font-semibold px-4 gap-2 py-5 rounded-t-lg bg-jacarta-800'>
+            <div className='md:w-full sm:w-[157px]'>STUDENT NAME</div>
             <div>STUDENT EMAIL</div>
             <div>FEE STATUS</div>
             <div>COUNSELLOR</div>
             <div>ASSIGN COUNSELLOR</div>
           </div>
-          {data.map((plan,index) => (
-            <div key={plan.Email} className={ index % 2 === 0 ? 'container grid grid-cols-5 gap-2 px-4 py-3 bg-jacarta-100' : 'container grid grid-cols-5 gap-2 px-4 py-3 bg-jacarta-50'}>
-              <div className='my-auto'>{plan.Name}</div>
-              <div className='my-auto'>{plan.Email}</div>
-              <div className=' my-auto'>
-                {plan.Payment}
+          <div className='md:inline-block sm:flex overflow-x-auto'>
+            {data.map((plan, index) => (
+              <div key={plan.Email} className={index % 2 === 0 ? ' container grid md:grid-cols-5 gap-2 px-4 py-3 bg-jacarta-100' : 'container sm:w-[1250px] grid md:grid-cols-5 gap-2 px-4 py-3 bg-jacarta-50'}>
+                <div className='my-auto '>{plan.Name}</div>
+                <div className='my-auto '>{plan.Email}</div>
+                <div className=' my-auto '>
+                  {plan.Payment}
+                </div>
+                <div className=' my-auto '>
+                  {plan.Cname}
+                </div>
+                <div className='my-auto md:w-full sm:w-[170px]'>
+                  <button onClick={() => {
+                    setSelectedStudent(plan);
+                    toggleModal();
+                  }} className='bg-accent-dark text-white px-3 py-1 rounded-lg'>
+                    Assign Counsellor
+                  </button>
+                </div>
               </div>
-              <div className=' my-auto'>
-                {plan.Cname}
-              </div>
-              <div className='my-auto'>
-                <button onClick={() => {
-                  setSelectedStudent(plan);
-                  toggleModal();
-                }} className='bg-accent-dark text-white px-3 py-1 rounded-lg'>
-                  Assign Counsellor
-                </button>
-              </div>
-            </div>
-          ))}
+            ))}
+          </div>
         </div>
 
         {modal && (

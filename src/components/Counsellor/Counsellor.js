@@ -60,7 +60,7 @@ const Counsellor = () => {
         <div className='counsellorbanner'>
             <Header />
             <div className='container '>
-                
+
                 <div className=" py-6 flex items-center justify-center mt-6">
                     <div className=" p-8 rounded shadow-lg md:w-1/2 sm:w-full bg-jacarta-50">
                         <h2 className=" text-accent-dark text-2xl font-semibold mb-4 text-center">ADD NEW COUNSELLOR</h2>
@@ -125,28 +125,30 @@ const Counsellor = () => {
                     COUNSELLORS RANKING
                 </div>
 
-                <div className='py-4 text-center pb-12'>
-                    <div className='text-stone-50 grid grid-cols-4 text-sm font-semibold px-5  py-5 rounded-t-lg bg-jacarta-800'>
+                <div className='py-4 pb-12 md:inline-block sm:flex w-full'>
+                    <div className='text-stone-50 grid md:grid-cols-4 text-sm font-semibold px-4 gap-2  py-5 rounded-t-lg bg-jacarta-800'>
                         <div>COUNSELLOR NAME</div>
                         <div>COUNSELLOR EMAIL</div>
                         <div>COUNSELLOR PHONE</div>
-                        <div>TOTAL FEE PAID STUDENTS</div>
+                        <div className='my-auto md:w-full sm:w-[170px]'>TOTAL FEE PAID STUDENTS</div>
                     </div>
-                    {data.map((plan, index) => (
-                        <div key={plan.Email} className={index % 2 === 0 ? 'container grid grid-cols-4 gap-2 px-4 py-3 bg-jacarta-100' : 'container grid grid-cols-4 gap-2 px-4 py-3 bg-jacarta-50'}>
-                            <div className=' '>{plan.Name}</div>
-                            <div className=' '>{plan.Email}</div>
-                            <div className=' '>{plan.Mobile}</div>
-                            <div className=' '>{plan.Count}</div>
-                        </div>
-                    ))}
+                    <div className='md:inline-block sm:flex overflow-x-auto w-full'>
+                        {data.map((plan, index) => (
+                            <div key={plan.Email} className={index % 2 === 0 ? 'container grid md:grid-cols-4 gap-2 px-4 py-3 bg-jacarta-100' : 'container grid md:grid-cols-4 gap-2 px-4 py-3 bg-jacarta-50'}>
+                                <div className=' '>{plan.Name}</div>
+                                <div className=' '>{plan.Email}</div>
+                                <div className=' '>{plan.Mobile}</div>
+                                <div className=' '>{plan.Count}</div>
+                            </div>
+                        ))}
+                    </div>
                 </div>
                 <div className='text-center'>
-                <Link to='/AdminDashboard'>
-                    <button class="m-3 font-semibold bg-accent text-white p-2 px-6 text-md rounded hover:bg-accent-dark transition duration-300">
-                        GO BACK
-                    </button>
-                </Link>
+                    <Link to='/AdminDashboard'>
+                        <button class="m-3 font-semibold bg-accent text-white p-2 px-6 text-md rounded hover:bg-accent-dark transition duration-300">
+                            GO BACK
+                        </button>
+                    </Link>
                 </div>
             </div>
         </div>
