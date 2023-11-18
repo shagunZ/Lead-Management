@@ -55,6 +55,7 @@ const Counsellor = () => {
         // console.log(data);
     }, []);
 
+    const [search, setSearch] = useState('');
 
     return (
         <div className='counsellorbanner'>
@@ -125,6 +126,15 @@ const Counsellor = () => {
                     COUNSELLORS RANKING
                 </div>
 
+                <div className='border-b-2 border-blue py-2'>
+                    <input
+                        className="appearance-none bg-transparent border-none w-full text-stone-50 mr-3 py-1 px-2 leading-tight focus:outline-none"
+                        type="text"
+                        onChange={(e) => setSearch(e.target.value)}
+                        placeholder='🔎 Search Counsellor...'
+                    />
+                </div>
+
                 <div className='py-4 pb-12 md:inline-block sm:flex w-full'>
                     <div className='text-stone-50 grid md:grid-cols-4 text-sm font-semibold px-4 gap-2  py-5 rounded-t-lg bg-jacarta-800'>
                         <div>COUNSELLOR NAME</div>
@@ -133,7 +143,9 @@ const Counsellor = () => {
                         <div className='my-auto md:w-full sm:w-[170px]'>TOTAL FEE PAID STUDENTS</div>
                     </div>
                     <div className='md:inline-block sm:flex overflow-x-auto w-full'>
-                        {data.map((plan, index) => (
+                        {data.filter((plan) => {
+                            return search.toLowerCase() === '' ? plan : plan.Name.toLowerCase().includes(search)
+                        }).map((plan, index) => (
                             <div key={plan.Email} className={index % 2 === 0 ? 'container grid md:grid-cols-4 gap-2 px-4 py-3 bg-jacarta-100' : 'container grid md:grid-cols-4 gap-2 px-4 py-3 bg-jacarta-50'}>
                                 <div className=' '>{plan.Name}</div>
                                 <div className=' '>{plan.Email}</div>
