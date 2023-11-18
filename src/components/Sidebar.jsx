@@ -15,7 +15,7 @@ const Sidebar = () => {
     });
   }
   return (
-    <div className='h-[647px] bg-jacarta-800 '>
+    <div className='md:h-[647px] sm:h-screen bg-jacarta-800 '>
       {/* profile */}
 
       
