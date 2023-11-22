@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom'
 import Sidebar from '../Sidebar'
 import { useState, useEffect } from 'react'
 import { auth } from '../../firebase'
-import { useMediaQuery } from 'react-responsive';
+// import { useMediaQuery } from 'react-responsive';
 
 const Dashboard = (props) => {
 
