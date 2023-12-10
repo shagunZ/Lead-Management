@@ -146,11 +146,11 @@ function Signup() {
       <div className=" border-red p-8 pt-12">
 
         <div className="border-b md:w-3/5 sm:w-full border-b-[#225296] pb-16">
-          <div className=" text-light-base font-semibold">AN ILLUSTRIOUS CAREER BEGINS AT</div>
-          <div className="text-[#f7a300] font-semibold text-6xl">INDIA NO. 1</div>
-          <div className="text-[#f7a300] font-semibold text-5xl"> STATE UNIVERSITY</div>
-          <div className="text-light-base ">SMVDU offers top-notch career opportunities and global exposure, recognizing academic excellence with</div>
-          <div className="text-[#e9c681] font-semibold text-lg">scholarships worth Rs. 170 Crores.</div>
+          <div className=" text-light-base font-semibold">AN ILLUSTRIOUS CAREER BEGINS WHERE</div>
+          <div className="text-[#f7a300] font-semibold text-6xl">INNOVATION MEETS</div>
+          <div className="text-[#e9c681] font-semibold text-5xl"> EXCELLENCE</div>
+          <div className="text-light-base font-semibold ">On a Mission to pursue education, scholarship, and research for the benefit of society at the highest levels of international excellence.</div>
+          {/* <div className="text-[#e9c681] font-semibold text-lg">scholarships worth Rs. 170 Crores.</div> */}
         </div>
 
         <div className=" mt-8 md:flex sm:inline-block">
@@ -171,8 +171,8 @@ function Signup() {
             <div className=" flex justify-center">
               <div className=" w-1/2">
                 <div className="text-light-base font-semibold text-sm">SMVDU RANKS</div>
-                <div className="text-[#e9c681] text-3xl font-semibold">101th</div>
-                <div className="text-light-base">AMONG ENGINEERING INSTITUTIONS IN INDIA BY NIRF 2022 </div>
+                <div className="text-[#e9c681] text-3xl font-semibold">101-150</div>
+                <div className="text-light-base">IN ENGINEERING INSTITUTIONS BY NIRF 2023 </div>
               </div>
               <div>
                 <img src="https://cucet.cuchd.in/new-assets/img/nirf-logo.webp" alt="img" />
@@ -182,8 +182,8 @@ function Signup() {
             <div className=" flex mt-3 justify-center">
               <div className=" w-1/2">
                 <div className="text-light-base font-semibold text-sm">SMVDU RANKED IN</div>
-                <div className="text-[#e9c681] text-3xl font-semibold">801-1000 band</div>
-                <div className="text-light-base">AMONG TOP UNIVERSITIES IN WORLD BY WORLD UNIVERSITY RANKING 2023 </div>
+                <div className="text-[#e9c681] text-3xl font-semibold">151-200</div>
+                <div className="text-light-base">AMONG TOP UNIVERSITIES IN NIRF 2023 </div>
               </div>
               <div>
                 <img src="https://cucet.cuchd.in/new-assets/img/qs-ranking-logo-subject.webp" alt="img" />
